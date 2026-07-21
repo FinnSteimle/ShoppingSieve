@@ -79,6 +79,11 @@ body {
   object-fit: cover;
 }
 
+/* Target and hide only the dashed red target box overlay, leaving the Torch <button> active */
+.scanner-wrapper div[style*="dashed"] {
+  display: none;
+}
+
 /* Inset Borders - Prevents Layout Shifting & Out-of-Bounds Horizontal Overflow */
 .scanner-wrapper.safe-border {
   box-shadow: inset 0 0 0 4px var(--safe), 0 0 25px rgba(74, 222, 128, 0.4);
