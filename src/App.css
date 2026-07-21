@@ -74,16 +74,9 @@ body {
 }
 
 .scanner-wrapper video,
-.scanner-wrapper canvas,
-.scanner-wrapper div,
-.scanner-wrapper section {
-  max-width: 100% !important;
-  object-fit: cover !important;
-  overflow: hidden !important;
-}
-
-.scanner-wrapper svg {
-  display: none !important;
+.scanner-wrapper canvas {
+  max-width: 100%;
+  object-fit: cover;
 }
 
 /* Inset Borders - Prevents Layout Shifting & Out-of-Bounds Horizontal Overflow */
