@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { Scanner, type IDetectedBarcode } from '@yudiel/react-qr-scanner';
 import { WatchlistFilter } from './components/WatchlistFilter';
-import { ProductResult, type ProductData } from './components/ProductResult';
 import './App.css';
 
 const PRESET_GRAINS = ['Weizen', 'Roggen', 'Urdinkel', 'Hafer', 'Mais', 'Reis', 'Quinoa', 'Gerste', 'Hirse'];
+
+export interface ProductData {
+  productName: string;
+  ingredients: string;
+}
 
 function App() {
   const [barcode, setBarcode] = useState<string | null>(null);
@@ -12,6 +16,14 @@ function App() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedGrains, setSelectedGrains] = useState<string[]>(PRESET_GRAINS);
+
+  const isPaused = loading || product !== null || error !== null;
+
+  const resetScan = () => {
+    setBarcode(null);
+    setProduct(null);
+    setError(null);
+  };
 
   const toggleGrain = (grain: string) => {
     setSelectedGrains(prev =>
@@ -77,9 +89,11 @@ function App() {
   };
 
   const handleScan = (detectedCodes: IDetectedBarcode[]) => {
+    if (isPaused) return;
+
     if (detectedCodes.length > 0) {
       const code = detectedCodes[0].rawValue;
-      if (code && code !== barcode) {
+      if (code) {
         setBarcode(code);
         fetchProduct(code);
       }
@@ -87,6 +101,7 @@ function App() {
   };
 
   const flaggedGrains = product ? getDetectedFlaggedGrains(product.ingredients) : [];
+  const isSafe = product ? flaggedGrains.length === 0 : false;
 
   return (
     <div className="container">
@@ -95,25 +110,70 @@ function App() {
         <p className="subtitle">Scan a food product barcode</p>
       </header>
 
-      <WatchlistFilter
-        presetGrains={PRESET_GRAINS}
-        selectedGrains={selectedGrains}
-        onToggleGrain={toggleGrain}
-      />
-
+      {/* Main Camera & Controls Area */}
       <main className="main">
-        <div className="scanner-wrapper">
+        <div className={`scanner-wrapper ${isPaused && product ? (isSafe ? 'safe-border' : 'danger-border') : ''}`}>
           <Scanner
             onScan={handleScan}
             onError={(err) => console.error(err)}
+            paused={isPaused}
+            scanDelay={500}
             formats={['ean_13', 'ean_8', 'qr_code']}
           />
+
+          {/* Loading Overlay */}
+          {loading && (
+            <div className="scanner-overlay loading-overlay">
+              <span className="overlay-status-title">SCANNING...</span>
+              <p className="overlay-subtext">Fetching product ingredients</p>
+            </div>
+          )}
+
+          {/* Result / Error Overlay */}
+          {isPaused && !loading && (
+            <div
+              className={`scanner-overlay ${error || !isSafe ? 'danger-overlay' : 'safe-overlay'}`}
+              onClick={resetScan}
+            >
+              <div className="overlay-content">
+                <span className="overlay-status-title">
+                  {error ? 'NOT FOUND' : (isSafe ? 'SAFE' : 'DANGER!')}
+                </span>
+
+                {product && (
+                  <p className="overlay-product-name">{product.productName}</p>
+                )}
+
+                {barcode && <span className="overlay-barcode-tag">EAN: {barcode}</span>}
+
+                {product && !isSafe && (
+                  <p className="overlay-danger-list">Contains: {flaggedGrains.join(', ')}</p>
+                )}
+
+                {error && <p className="overlay-subtext">{error}</p>}
+
+                <button type="button" className="huge-scan-again-btn" onClick={resetScan}>
+                  SCAN AGAIN! ↻
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
-        {barcode && <div className="barcode-badge">Scanned EAN: <strong>{barcode}</strong></div>}
-        {loading && <div className="status-card">Fetching ingredients...</div>}
-        {error && <div className="status-card error-card">{error}</div>}
-        {product && <ProductResult product={product} flaggedGrains={flaggedGrains} />}
+        {/* Watchlist Filter */}
+        <WatchlistFilter
+          presetGrains={PRESET_GRAINS}
+          selectedGrains={selectedGrains}
+          onToggleGrain={toggleGrain}
+        />
+
+        {/* Full Ingredients List */}
+        <div className="ingredients-card">
+          <h3>Full Ingredients List</h3>
+          <p className="ingredients-text">
+            {product ? product.ingredients : 'Scan a product barcode to view ingredients list.'}
+          </p>
+        </div>
       </main>
     </div>
   );

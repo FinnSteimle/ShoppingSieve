@@ -14,11 +14,16 @@
   padding: 0;
 }
 
-body {
+html, body {
   background-color: var(--bg);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
   display: flex;
   justify-content: center;
 }
@@ -27,9 +32,11 @@ body {
   width: 100%;
   max-width: 480px;
   padding: 1rem;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  overflow-x: hidden;
 }
 
 .header {
@@ -48,7 +55,148 @@ body {
   color: var(--text-muted);
 }
 
-/* Filter Selection Section */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.scanner-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  background: #000;
+  aspect-ratio: 1 / 1;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.scanner-wrapper video,
+.scanner-wrapper canvas,
+.scanner-wrapper div,
+.scanner-wrapper section {
+  max-width: 100% !important;
+  object-fit: cover !important;
+  overflow: hidden !important;
+}
+
+/* Inset Borders - Prevents Layout Shifting & Out-of-Bounds Horizontal Overflow */
+.scanner-wrapper.safe-border {
+  box-shadow: inset 0 0 0 4px var(--safe), 0 0 25px rgba(74, 222, 128, 0.4);
+}
+
+.scanner-wrapper.danger-border {
+  box-shadow: inset 0 0 0 4px var(--danger), 0 0 25px rgba(248, 113, 113, 0.4);
+}
+
+/* Scanner Paused Colored Overlay */
+.scanner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  padding: 1.5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.scanner-overlay.safe-overlay {
+  background: rgba(15, 38, 25, 0.88);
+}
+
+.scanner-overlay.danger-overlay {
+  background: rgba(48, 16, 22, 0.88);
+}
+
+.scanner-overlay.loading-overlay {
+  background: rgba(15, 23, 42, 0.88);
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 100%;
+}
+
+.overlay-status-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.safe-overlay .overlay-status-title {
+  color: var(--safe);
+}
+
+.danger-overlay .overlay-status-title {
+  color: var(--danger);
+}
+
+.loading-overlay .overlay-status-title {
+  color: var(--primary);
+}
+
+.overlay-product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f8fafc;
+  word-break: break-word;
+}
+
+.overlay-barcode-tag {
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  color: #cbd5e1;
+  font-family: monospace;
+}
+
+.overlay-danger-list {
+  font-size: 1rem;
+  color: #fee2e2;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.overlay-subtext {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.huge-scan-again-btn {
+  background: var(--primary);
+  color: #0f172a;
+  border: none;
+  padding: 1rem 1.75rem;
+  border-radius: 9999px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.5);
+  cursor: pointer;
+  margin-top: 0.25rem;
+  transition: transform 0.15s ease-in-out, background 0.15s ease-in-out;
+}
+
+.huge-scan-again-btn:hover,
+.huge-scan-again-btn:active {
+  transform: scale(1.05);
+  background: #7dd3fc;
+}
+
+/* Watchlist Filter Section below scanner */
 .filter-section {
   background: var(--card-bg);
   padding: 0.875rem 1rem;
@@ -59,7 +207,7 @@ body {
 }
 
 .filter-section h3 {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -89,103 +237,24 @@ body {
   border-color: var(--primary);
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.scanner-wrapper {
-  width: 100%;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  background: #000;
-  aspect-ratio: 1 / 1;
-}
-
-.barcode-badge {
-  text-align: center;
+.ingredients-card {
   background: var(--card-bg);
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  color: var(--primary);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-}
-
-.status-card {
-  background: var(--card-bg);
-  padding: 1rem;
-  border-radius: 0.75rem;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-.error-card {
-  color: var(--danger);
-  border: 1px solid rgba(248, 113, 113, 0.3);
-}
-
-.product-card {
-  background: var(--card-bg);
-  padding: 1.25rem;
+  padding: 1rem 1.25rem;
   border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.4rem;
+  min-height: 110px;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Safety Alert Banner */
-.safety-banner {
-  padding: 0.875rem 1rem;
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.safety-banner.safe {
-  background: rgba(74, 222, 128, 0.15);
-  border: 1px solid var(--safe);
-}
-
-.safety-banner.safe .safety-title {
-  color: var(--safe);
-}
-
-.safety-banner.danger {
-  background: rgba(248, 113, 113, 0.15);
-  border: 1px solid var(--danger);
-}
-
-.safety-banner.danger .safety-title {
-  color: var(--danger);
-}
-
-.safety-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-}
-
-.safety-desc {
-  font-size: 0.9rem;
-  color: var(--text);
-  font-weight: 500;
-}
-
-.product-card h2 {
-  font-size: 1.2rem;
-  color: var(--text);
-}
-
-.product-card h3 {
-  font-size: 0.8rem;
+.ingredients-card h3 {
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-top: 0.25rem;
 }
 
 .ingredients-text {
