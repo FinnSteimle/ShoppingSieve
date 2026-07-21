@@ -3,11 +3,11 @@ import { Scanner, type IDetectedBarcode } from '@yudiel/react-qr-scanner';
 import { WatchlistFilter } from './components/WatchlistFilter';
 import './App.css';
 
-const PRESET_INGREDIENTS = ['Weizen', 'Roggen', 'Urdinkel', 'Hafer', 'Mais', 'Reis', 'Quinoa', 'Gerste', 'Hirse'];
+const PRESET_AVOIDED_INGREDIENTS = ['Weizen', 'Roggen', 'Urdinkel', 'Hafer', 'Mais', 'Reis', 'Quinoa', 'Gerste', 'Hirse'];
 
 export interface ProductData {
   productName: string;
-  ingredients: string;
+  ingredientsText: string;
 }
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedIngredients, setSelectedIngredients] = useState<string[]>(PRESET_INGREDIENTS);
+  const [activeAvoidedIngredients, setActiveAvoidedIngredients] = useState<string[]>(PRESET_AVOIDED_INGREDIENTS);
 
   const isPaused = loading || product !== null || error !== null;
 
@@ -25,15 +25,15 @@ function App() {
     setError(null);
   };
 
-  const toggleIngredient = (ingredient: string) => {
-    setSelectedIngredients(prev =>
+  const toggleAvoidedIngredient = (ingredient: string) => {
+    setActiveAvoidedIngredients(prev =>
       prev.includes(ingredient) ? prev.filter(i => i !== ingredient) : [...prev, ingredient]
     );
   };
 
-  const getDetectedFlaggedIngredients = (ingredientsText: string): string[] => {
+  const getDetectedAvoidedIngredients = (ingredientsText: string): string[] => {
     const textLower = ingredientsText.toLowerCase();
-    return selectedIngredients.filter(ingredient => {
+    return activeAvoidedIngredients.filter(ingredient => {
       return textLower.includes(ingredient.toLowerCase());
     });
   };
@@ -70,13 +70,13 @@ function App() {
         productName = `${brand} - ${productName}`;
       }
 
-      const ingredients = productNode.ingredients_text_de
+      const ingredientsText = productNode.ingredients_text_de
         || productNode.ingredients_text
         || productNode.ingredients_text_fr
         || productNode.ingredients_text_en
         || 'Ingredients list unavailable for this barcode.';
 
-      setProduct({ productName, ingredients });
+      setProduct({ productName, ingredientsText });
     } catch (err: any) {
       setError(err.message || 'Failed to fetch product');
     } finally {
@@ -96,8 +96,8 @@ function App() {
     }
   };
 
-  const flaggedIngredients = product ? getDetectedFlaggedIngredients(product.ingredients) : [];
-  const isSafe = product ? flaggedIngredients.length === 0 : false;
+  const detectedAvoidedIngredients = product ? getDetectedAvoidedIngredients(product.ingredientsText) : [];
+  const isSafe = product ? detectedAvoidedIngredients.length === 0 : false;
 
   return (
     <div className="container">
@@ -143,7 +143,7 @@ function App() {
                 {barcode && <span className="overlay-barcode-tag">EAN: {barcode}</span>}
 
                 {product && !isSafe && (
-                  <p className="overlay-danger-list">Contains: {flaggedIngredients.join(', ')}</p>
+                  <p className="overlay-danger-list">Contains: {detectedAvoidedIngredients.join(', ')}</p>
                 )}
 
                 {error && <p className="overlay-subtext">{error}</p>}
@@ -158,16 +158,16 @@ function App() {
 
         {/* Watchlist Filter */}
         <WatchlistFilter
-          presetIngredients={PRESET_INGREDIENTS}
-          selectedIngredients={selectedIngredients}
-          onToggleIngredient={toggleIngredient}
+          presetAvoidedIngredients={PRESET_AVOIDED_INGREDIENTS}
+          activeAvoidedIngredients={activeAvoidedIngredients}
+          onToggleAvoidedIngredient={toggleAvoidedIngredient}
         />
 
         {/* Full Ingredients List */}
         <div className="ingredients-card">
-          <h3>Full Ingredients List</h3>
+          <h3>Scanned Product Ingredients</h3>
           <p className="ingredients-text">
-            {product ? product.ingredients : 'Scan a product barcode to view ingredients list.'}
+            {product ? product.ingredientsText : 'Scan a product barcode to view ingredients list.'}
           </p>
         </div>
       </main>

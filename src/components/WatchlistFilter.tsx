@@ -1,24 +1,31 @@
 interface WatchlistFilterProps {
-  presetIngredients: string[];
-  selectedIngredients: string[];
-  onToggleIngredient: (ingredient: string) => void;
+  presetAvoidedIngredients: string[];
+  activeAvoidedIngredients: string[];
+  onToggleAvoidedIngredient: (ingredient: string) => void;
 }
 
-export function WatchlistFilter({ presetIngredients, selectedIngredients, onToggleIngredient }: WatchlistFilterProps) {
+export function WatchlistFilter({
+  presetAvoidedIngredients,
+  activeAvoidedIngredients,
+  onToggleAvoidedIngredient,
+}: WatchlistFilterProps) {
   return (
     <section className="filter-section">
-      <h3>Watchlist Ingredients</h3>
+      <div className="filter-header">
+        <h3>Ingredients to Avoid</h3>
+        <p className="filter-subtitle">Selected ingredients trigger a DANGER warning when scanned</p>
+      </div>
       <div className="pills-grid">
-        {presetIngredients.map(ingredient => {
-          const isActive = selectedIngredients.includes(ingredient);
+        {presetAvoidedIngredients.map(ingredient => {
+          const isAvoided = activeAvoidedIngredients.includes(ingredient);
           return (
             <button
               key={ingredient}
               type="button"
-              className={`pill-btn ${isActive ? 'active' : ''}`}
-              onClick={() => onToggleIngredient(ingredient)}
+              className={`pill-btn ${isAvoided ? 'active' : ''}`}
+              onClick={() => onToggleAvoidedIngredient(ingredient)}
             >
-              {ingredient}
+              {isAvoided ? `${ingredient}` : ingredient}
             </button>
           );
         })}

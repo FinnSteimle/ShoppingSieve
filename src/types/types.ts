@@ -1,6 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  ingredients: string[];
+  rawIngredientsText: string;
+  avoidedIngredientsFound?: string[];
   isSafe?: boolean;
 }
