@@ -1,24 +1,24 @@
 interface WatchlistFilterProps {
-  presetGrains: string[];
-  selectedGrains: string[];
-  onToggleGrain: (grain: string) => void;
+  presetIngredients: string[];
+  selectedIngredients: string[];
+  onToggleIngredient: (ingredient: string) => void;
 }
 
-export function WatchlistFilter({ presetGrains, selectedGrains, onToggleGrain }: WatchlistFilterProps) {
+export function WatchlistFilter({ presetIngredients, selectedIngredients, onToggleIngredient }: WatchlistFilterProps) {
   return (
     <section className="filter-section">
       <h3>Watchlist Ingredients</h3>
       <div className="pills-grid">
-        {presetGrains.map(grain => {
-          const isActive = selectedGrains.includes(grain);
+        {presetIngredients.map(ingredient => {
+          const isActive = selectedIngredients.includes(ingredient);
           return (
             <button
-              key={grain}
+              key={ingredient}
               type="button"
               className={`pill-btn ${isActive ? 'active' : ''}`}
-              onClick={() => onToggleGrain(grain)}
+              onClick={() => onToggleIngredient(ingredient)}
             >
-              {grain}
+              {ingredient}
             </button>
           );
         })}

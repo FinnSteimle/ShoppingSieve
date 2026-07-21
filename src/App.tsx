@@ -3,7 +3,7 @@ import { Scanner, type IDetectedBarcode } from '@yudiel/react-qr-scanner';
 import { WatchlistFilter } from './components/WatchlistFilter';
 import './App.css';
 
-const PRESET_GRAINS = ['Weizen', 'Roggen', 'Urdinkel', 'Hafer', 'Mais', 'Reis', 'Quinoa', 'Gerste', 'Hirse'];
+const PRESET_INGREDIENTS = ['Weizen', 'Roggen', 'Urdinkel', 'Hafer', 'Mais', 'Reis', 'Quinoa', 'Gerste', 'Hirse'];
 
 export interface ProductData {
   productName: string;
@@ -15,7 +15,7 @@ function App() {
   const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedGrains, setSelectedGrains] = useState<string[]>(PRESET_GRAINS);
+  const [selectedIngredients, setSelectedIngredients] = useState<string[]>(PRESET_INGREDIENTS);
 
   const isPaused = loading || product !== null || error !== null;
 
@@ -25,20 +25,16 @@ function App() {
     setError(null);
   };
 
-  const toggleGrain = (grain: string) => {
-    setSelectedGrains(prev =>
-      prev.includes(grain) ? prev.filter(g => g !== grain) : [...prev, grain]
+  const toggleIngredient = (ingredient: string) => {
+    setSelectedIngredients(prev =>
+      prev.includes(ingredient) ? prev.filter(i => i !== ingredient) : [...prev, ingredient]
     );
   };
 
-  const getDetectedFlaggedGrains = (ingredientsText: string): string[] => {
+  const getDetectedFlaggedIngredients = (ingredientsText: string): string[] => {
     const textLower = ingredientsText.toLowerCase();
-    return selectedGrains.filter(grain => {
-      const grainLower = grain.toLowerCase();
-      if (grainLower === 'urdinkel') {
-        return textLower.includes('urdinkel') || textLower.includes('dinkel');
-      }
-      return textLower.includes(grainLower);
+    return selectedIngredients.filter(ingredient => {
+      return textLower.includes(ingredient.toLowerCase());
     });
   };
 
@@ -100,8 +96,8 @@ function App() {
     }
   };
 
-  const flaggedGrains = product ? getDetectedFlaggedGrains(product.ingredients) : [];
-  const isSafe = product ? flaggedGrains.length === 0 : false;
+  const flaggedIngredients = product ? getDetectedFlaggedIngredients(product.ingredients) : [];
+  const isSafe = product ? flaggedIngredients.length === 0 : false;
 
   return (
     <div className="container">
@@ -147,7 +143,7 @@ function App() {
                 {barcode && <span className="overlay-barcode-tag">EAN: {barcode}</span>}
 
                 {product && !isSafe && (
-                  <p className="overlay-danger-list">Contains: {flaggedGrains.join(', ')}</p>
+                  <p className="overlay-danger-list">Contains: {flaggedIngredients.join(', ')}</p>
                 )}
 
                 {error && <p className="overlay-subtext">{error}</p>}
@@ -162,9 +158,9 @@ function App() {
 
         {/* Watchlist Filter */}
         <WatchlistFilter
-          presetGrains={PRESET_GRAINS}
-          selectedGrains={selectedGrains}
-          onToggleGrain={toggleGrain}
+          presetIngredients={PRESET_INGREDIENTS}
+          selectedIngredients={selectedIngredients}
+          onToggleIngredient={toggleIngredient}
         />
 
         {/* Full Ingredients List */}
