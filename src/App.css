@@ -69,7 +69,7 @@ body {
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
   background: #000;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 8.5;
   transition: box-shadow 0.2s ease-in-out;
 }
 
@@ -80,6 +80,10 @@ body {
   max-width: 100% !important;
   object-fit: cover !important;
   overflow: hidden !important;
+}
+
+.scanner-wrapper svg {
+  display: none !important;
 }
 
 /* Inset Borders - Prevents Layout Shifting & Out-of-Bounds Horizontal Overflow */
@@ -104,7 +108,7 @@ body {
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  padding: 1.5rem;
+  padding: 0.75rem 1rem;
   text-align: center;
   box-sizing: border-box;
 }
@@ -125,12 +129,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.35rem;
   max-width: 100%;
 }
 
 .overlay-status-title {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 900;
   letter-spacing: 0.08em;
 }
@@ -148,30 +152,31 @@ body {
 }
 
 .overlay-product-name {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #f8fafc;
   word-break: break-word;
+  line-height: 1.2;
 }
 
 .overlay-barcode-tag {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   background: rgba(255, 255, 255, 0.15);
-  padding: 0.2rem 0.6rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 9999px;
   color: #cbd5e1;
   font-family: monospace;
 }
 
 .overlay-danger-list {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #fee2e2;
   font-weight: 600;
   word-break: break-word;
 }
 
 .overlay-subtext {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
 }
 
@@ -179,14 +184,14 @@ body {
   background: var(--primary);
   color: #0f172a;
   border: none;
-  padding: 1rem 1.75rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 9999px;
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 6px 20px -3px rgba(56, 189, 248, 0.5);
   cursor: pointer;
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
   transition: transform 0.15s ease-in-out, background 0.15s ease-in-out;
 }
 

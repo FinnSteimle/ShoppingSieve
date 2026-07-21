@@ -115,6 +115,7 @@ function App() {
             paused={isPaused}
             scanDelay={500}
             formats={['ean_13', 'ean_8', 'qr_code']}
+            components={{ finder: false, tracker: false }}
           />
 
           {/* Loading Overlay */}
