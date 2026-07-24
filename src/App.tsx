@@ -77,8 +77,12 @@ function App() {
         || 'Ingredients list unavailable for this barcode.';
 
       setProduct({ productName, ingredientsText });
-    } catch (err: any) {
-      setError(err.message || 'Failed to fetch product');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('Failed to fetch product');
+        }
     } finally {
       setLoading(false);
     }
