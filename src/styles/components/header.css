@@ -1,0 +1,15 @@
+.header {
+  text-align: center;
+  margin-top: var(--space-xs);
+}
+
+.header h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--primitive-font-weight-bold);
+  color: var(--color-brand-primary);
+}
+
+.subtitle {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+}

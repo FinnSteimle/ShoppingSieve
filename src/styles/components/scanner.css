@@ -1,0 +1,136 @@
+.scanner-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: var(--color-bg-scanner);
+  aspect-ratio: 16 / 8.5;
+  transition: box-shadow var(--transition-normal);
+}
+
+.scanner-wrapper video,
+.scanner-wrapper canvas {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Target and hide only the dashed red target box overlay, leaving the Torch <button> active */
+.scanner-wrapper div[style*="dashed"] {
+  display: none;
+}
+
+/* Inset Borders - Prevents Layout Shifting & Out-of-Bounds Horizontal Overflow */
+.scanner-wrapper.safe-border {
+  box-shadow: var(--shadow-glow-safe);
+}
+
+.scanner-wrapper.danger-border {
+  box-shadow: var(--shadow-glow-danger);
+}
+
+/* Scanner Paused Colored Overlay */
+.scanner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: var(--z-overlay);
+  padding: var(--space-md) var(--space-lg);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.scanner-overlay.safe-overlay {
+  background: var(--color-status-safe-overlay);
+}
+
+.scanner-overlay.danger-overlay {
+  background: var(--color-status-danger-overlay);
+}
+
+.scanner-overlay.loading-overlay {
+  background: var(--color-status-loading-overlay);
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--primitive-space-3);
+  max-width: 100%;
+}
+
+.overlay-status-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--primitive-font-weight-black);
+  letter-spacing: 0.08em;
+}
+
+.safe-overlay .overlay-status-title {
+  color: var(--color-status-safe);
+}
+
+.danger-overlay .overlay-status-title {
+  color: var(--color-status-danger);
+}
+
+.loading-overlay .overlay-status-title {
+  color: var(--color-brand-primary);
+}
+
+.overlay-product-name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--primitive-font-weight-bold);
+  color: var(--color-text-primary);
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.overlay-barcode-tag {
+  font-size: var(--font-size-xs);
+  background: var(--color-border-tag);
+  padding: var(--primitive-space-1) var(--primitive-space-5);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-subtle);
+  font-family: var(--font-family-mono);
+}
+
+.overlay-danger-list {
+  font-size: var(--font-size-md);
+  color: var(--color-text-danger-light);
+  font-weight: var(--primitive-font-weight-semibold);
+  word-break: break-word;
+}
+
+.overlay-subtext {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+}
+
+.huge-scan-again-btn {
+  background: var(--color-brand-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-lg);
+  font-weight: var(--primitive-font-weight-extrabold);
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-glow-primary);
+  cursor: pointer;
+  margin-top: var(--primitive-space-1);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.huge-scan-again-btn:hover,
+.huge-scan-again-btn:active {
+  transform: scale(1.05);
+  background: var(--color-brand-primary-hover);
+}

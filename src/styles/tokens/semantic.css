@@ -1,0 +1,75 @@
+:root {
+  /* Surface & Background Colors */
+  --color-bg-app: var(--primitive-color-slate-900);
+  --color-bg-card: var(--primitive-color-slate-800);
+  --color-bg-pill: var(--primitive-color-slate-700);
+  --color-bg-scanner: var(--primitive-color-black);
+
+  /* Text Colors */
+  --color-text-primary: var(--primitive-color-slate-50);
+  --color-text-muted: var(--primitive-color-slate-400);
+  --color-text-subtle: var(--primitive-color-slate-300);
+  --color-text-inverse: var(--primitive-color-slate-900);
+  --color-text-danger-light: var(--primitive-color-red-100);
+
+  /* Brand & Status Colors */
+  --color-brand-primary: var(--primitive-color-sky-400);
+  --color-brand-primary-hover: var(--primitive-color-sky-300);
+
+  --color-status-safe: var(--primitive-color-green-400);
+  --color-status-safe-overlay: rgba(15, 38, 25, 0.88);
+
+  --color-status-danger: var(--primitive-color-red-400);
+  --color-status-danger-hover: var(--primitive-color-red-300);
+  --color-status-danger-overlay: rgba(48, 16, 22, 0.88);
+  --color-status-danger-bg-active: rgba(248, 113, 113, 0.18);
+
+  --color-status-loading-overlay: rgba(15, 23, 42, 0.88);
+
+  /* Border & Divider Colors */
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-pill: rgba(255, 255, 255, 0.1);
+  --color-border-tag: rgba(255, 255, 255, 0.15);
+
+  /* Layout & Spacing Tokens */
+  --space-xs: var(--primitive-space-2);
+  --space-sm: var(--primitive-space-5);
+  --space-md: var(--primitive-space-6);
+  --space-lg: var(--primitive-space-8);
+  --space-xl: var(--primitive-space-9);
+
+  /* Container Boundaries */
+  --layout-max-width-mobile: 480px;
+
+  /* Border Radius Tokens */
+  --radius-sm: var(--primitive-radius-sm);
+  --radius-md: var(--primitive-radius-md);
+  --radius-lg: var(--primitive-radius-lg);
+  --radius-pill: var(--primitive-radius-full);
+
+  /* Typography Tokens */
+  --font-family-base: var(--primitive-font-sans);
+  --font-family-mono: var(--primitive-font-mono);
+
+  --font-size-xs: var(--primitive-font-size-xs);
+  --font-size-sm: var(--primitive-font-size-sm);
+  --font-size-base: var(--primitive-font-size-base);
+  --font-size-md: var(--primitive-font-size-md);
+  --font-size-lg: var(--primitive-font-size-lg);
+  --font-size-xl: var(--primitive-font-size-xl);
+  --font-size-2xl: var(--primitive-font-size-2xl);
+  --font-size-3xl: var(--primitive-font-size-3xl);
+
+  /* Shadow & Glow Tokens */
+  --shadow-card: var(--primitive-shadow-card);
+  --shadow-glow-primary: var(--primitive-shadow-glow-primary);
+  --shadow-glow-safe: var(--primitive-shadow-glow-safe);
+  --shadow-glow-danger: var(--primitive-shadow-glow-danger);
+
+  /* Animation & Motion Tokens */
+  --transition-fast: var(--primitive-transition-fast);
+  --transition-normal: var(--primitive-transition-normal);
+
+  /* Z-Index Tokens */
+  --z-overlay: var(--primitive-z-overlay);
+}
