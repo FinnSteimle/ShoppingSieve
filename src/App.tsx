@@ -3,7 +3,7 @@ import { Scanner, type IDetectedBarcode } from '@yudiel/react-qr-scanner';
 import { WatchlistFilter } from './components/WatchlistFilter';
 import './App.css';
 
-const PRESET_AVOIDED_INGREDIENTS = ['Weizen', 'Roggen', 'Urdinkel', 'Hafer', 'Mais', 'Reis', 'Quinoa', 'Gerste', 'Hirse'];
+const PRESET_AVOIDED_INGREDIENTS = ['Weizen', 'Roggen', 'Urdinkel', 'Hafer', 'Mais', 'Reis', 'Quinoa', 'Gerste', 'Hirse', "Dinkel"];
 
 export interface ProductData {
   productName: string;
