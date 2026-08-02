@@ -1,20 +1,23 @@
 import { useState } from "react";
 import { FilterSelection } from "./FilterSelection";
 
-export function Filter() {
-  const [selectionMenuIsOpen, setSelectionMenuIsOpen] = useState<boolean>(false);
+interface FilterProps {
+  ingredientsToFilter: string[];
+  setIngredientsToFilter: (set: Set<string>) => void;
+}
 
-  const currentIngredientsToFilter: string[] = ["test", "dinkel"];
+export function Filter({ ingredientsToFilter, setIngredientsToFilter }: FilterProps) {
+  const [selectionMenuIsOpen, setSelectionMenuIsOpen] = useState<boolean>(false);
   return (
     <div>
       <h3>Current ingredients you filter for:</h3>
       <ul>
-        {currentIngredientsToFilter.map((i: string) => (
+        {ingredientsToFilter.map((i: string) => (
           <li key={i}>{i}</li>
         ))}
       </ul>
       <button type="button" onClick={() => setSelectionMenuIsOpen(prev => !prev)}>Add more things to filter</button>
-      {selectionMenuIsOpen ? <FilterSelection /> : null }
+      {selectionMenuIsOpen ? <FilterSelection setIngredientsToFilter={setIngredientsToFilter} /> : null }
     </div>
   )
 }
