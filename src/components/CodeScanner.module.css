@@ -1,0 +1,10 @@
+
+.container {
+    max-height: 180px;
+    max-width: 480px;
+}
+
+
+.video {
+    object-fit: cover;
+}
