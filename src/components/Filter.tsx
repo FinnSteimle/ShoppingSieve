@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import { FilterSelection } from "./FilterSelection";
 
 interface FilterProps {
   ingredientsToFilter: string[];
-  setIngredientsToFilter: (set: Set<string>) => void;
+  setIngredientsToFilter: Dispatch<SetStateAction<string[]>>;
 }
 
 export function Filter({ ingredientsToFilter, setIngredientsToFilter }: FilterProps) {
@@ -17,7 +17,7 @@ export function Filter({ ingredientsToFilter, setIngredientsToFilter }: FilterPr
         ))}
       </ul>
       <button type="button" onClick={() => setSelectionMenuIsOpen(prev => !prev)}>Add more things to filter</button>
-      {selectionMenuIsOpen ? <FilterSelection setIngredientsToFilter={setIngredientsToFilter} /> : null }
+      {selectionMenuIsOpen ? <FilterSelection ingredientsToFilter={ingredientsToFilter} setIngredientsToFilter={setIngredientsToFilter} /> : null }
     </div>
   )
 }

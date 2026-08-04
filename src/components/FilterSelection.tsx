@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import type { Category } from "../types/types"
 import { CategoryDetailView } from "./CategoryDetailView";
 
 interface FilterSelectionProps {
-  setIngredientsToFilter: (set: Set<string>) => void;
+  ingredientsToFilter: string[];
+  setIngredientsToFilter: Dispatch<SetStateAction<string[]>>;
 }
 
-export function FilterSelection({setIngredientsToFilter}: FilterSelectionProps) {
+export function FilterSelection({ingredientsToFilter, setIngredientsToFilter}: FilterSelectionProps) {
   const categories: Category[] = [
     {
       name: "Getreide",
@@ -19,23 +20,26 @@ export function FilterSelection({setIngredientsToFilter}: FilterSelectionProps) 
   ]
 
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
-  const [expandButtonText, setExpandButtonText] = useState<string>("more");
 
-  // to do
-  // const handleCategoryCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   e.target.checked
-  // }
+  const handleCategoryCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, category: Category) => {
+    if (e.target.checked) {
+      // to do: catch bug where you can "readd" all elements if you select all via "category select"
+      // and then deselect one ingredient individually and then "readd" all via category select again
+      setIngredientsToFilter(prev => [...prev, ...category.ingredients]);
+    }
+    else {
+      setIngredientsToFilter((prev: string[]) => [...prev].filter((ingredient: string) => !category.ingredients.includes(ingredient)));
+    }
+  }
 
   const handleDetailViewButtonPress = (category: Category) => {
     // minimize
     if (expandedCategories.includes(category.name)) {
       setExpandedCategories((prev: string[]) => [...prev].filter(categoryName => categoryName !== category.name));
-      setExpandButtonText("more");
     }
     // expand
     else {
       setExpandedCategories((prev: string[]) => [...prev, category.name]);
-      setExpandButtonText("less");
     }
 
   }
@@ -47,10 +51,22 @@ export function FilterSelection({setIngredientsToFilter}: FilterSelectionProps) 
       {categories.map(cat => {
         return (
           <li key={cat.name}>
-            <input type="checkbox" id={cat.name} name={cat.name} />
+            <input type="checkbox"
+              id={cat.name}
+              name={cat.name}
+              checked={cat.ingredients.every(catIngredient => ingredientsToFilter.includes(catIngredient))}
+              onChange={(e) => handleCategoryCheckboxChange(e, cat)}
+            />
             <label htmlFor={cat.name}>{cat.name}</label>
-            <button type="button" onClick={() => handleDetailViewButtonPress(cat)}>{expandButtonText}</button>
-            {expandedCategories.includes(cat.name) ? <CategoryDetailView ingredients={cat.ingredients}/> : <></>}
+            <button type="button" onClick={() => handleDetailViewButtonPress(cat)}>
+              {expandedCategories.includes(cat.name) ? "less" : "more"}
+            </button>
+            {expandedCategories.includes(cat.name) ?
+              <CategoryDetailView
+              ingredients={cat.ingredients}
+              ingredientsToFilter={ingredientsToFilter}
+              setIngredientsToFilter={setIngredientsToFilter}
+            /> : <></>}
           </li>
         );
       })}
