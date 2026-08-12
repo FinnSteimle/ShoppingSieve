@@ -17,10 +17,8 @@ export function Filter({ ingredientsToFilter, setIngredientsToFilter }: FilterPr
         {ingredientsToFilter.map((i: string) => (
           <li key={i}>{i}</li>
         ))}
-        <li>
-          <button className={styles.filterSelectionButton} type="button" onClick={() => setSelectionMenuIsOpen(prev => !prev)}>+</button>
-        </li>
       </ul>
+      <button className={styles.filterSelectionButton} type="button" onClick={() => setSelectionMenuIsOpen(prev => !prev)}>+</button>
       <div className={styles.filterSelectionMenuContainer}>
         {selectionMenuIsOpen ? <FilterSelection ingredientsToFilter={ingredientsToFilter} setIngredientsToFilter={setIngredientsToFilter} /> : null}
       </div>
