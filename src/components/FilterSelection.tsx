@@ -23,9 +23,7 @@ export function FilterSelection({ingredientsToFilter, setIngredientsToFilter}: F
 
   const handleCategoryCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, category: Category) => {
     if (e.target.checked) {
-      // to do: catch bug where you can "readd" all elements if you select all via "category select"
-      // and then deselect one ingredient individually and then "readd" all via category select again
-      setIngredientsToFilter(prev => [...prev, ...category.ingredients]);
+      setIngredientsToFilter((prev: string[]) => [...prev.filter((ingredient: string) => !category.ingredients.includes(ingredient)), ...category.ingredients]);
     }
     else {
       setIngredientsToFilter((prev: string[]) => [...prev].filter((ingredient: string) => !category.ingredients.includes(ingredient)));
