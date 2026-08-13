@@ -1,0 +1,7 @@
+@import '../../tokens.css';
+
+
+.categoryListContainer {
+    list-style: none;
+    display: flex;
+}

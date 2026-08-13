@@ -1,12 +1,12 @@
 import type { Dispatch, SetStateAction } from 'react';
 
-interface CategoryDetailViewProps {
+interface CategoryIngredientsProps {
   ingredients: string[];
   ingredientsToFilter: string[];
   setIngredientsToFilter: Dispatch<SetStateAction<string[]>>;
 }
 
-export function CategoryDetailView({ ingredients, ingredientsToFilter, setIngredientsToFilter }: CategoryDetailViewProps) {
+export function CategoryIngredients({ ingredients, ingredientsToFilter, setIngredientsToFilter }: CategoryIngredientsProps) {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
@@ -18,7 +18,7 @@ export function CategoryDetailView({ ingredients, ingredientsToFilter, setIngred
   }
   return (
     <fieldset>
-      <ul>
+      <ul >
         {ingredients.map(ing => {
           return (
             <li key={ing}>

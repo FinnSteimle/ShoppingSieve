@@ -1,13 +1,15 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import type { Category } from "../types/types"
-import { CategoryDetailView } from "./CategoryDetailView";
+import type { Category } from "../../types/types"
+import { CategoryIngredients } from "./CategoryIngredients";
 
-interface FilterSelectionProps {
+import styles from "./CategoryList.module.css";
+
+interface CategoryListProps {
   ingredientsToFilter: string[];
   setIngredientsToFilter: Dispatch<SetStateAction<string[]>>;
 }
 
-export function FilterSelection({ingredientsToFilter, setIngredientsToFilter}: FilterSelectionProps) {
+export function CategoryList({ ingredientsToFilter, setIngredientsToFilter }: CategoryListProps) {
   const categories: Category[] = [
     {
       name: "Getreide",
@@ -19,6 +21,7 @@ export function FilterSelection({ingredientsToFilter, setIngredientsToFilter}: F
     }
   ]
 
+  const [isCategoryListOpen, setIsCategoryListOpen] = useState<boolean>(false);
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
   const handleCategoryCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, category: Category) => {
@@ -39,14 +42,17 @@ export function FilterSelection({ingredientsToFilter, setIngredientsToFilter}: F
     else {
       setExpandedCategories((prev: string[]) => [...prev, category.name]);
     }
-
   }
 
   return (
     <fieldset>
-      <legend>Select all ingredients from a category or click the right arrow for more detailed options</legend>
-      <ul>
-      {categories.map(cat => {
+      <ul className={styles.ingredientCategories}>
+        <li>
+          <button type="button" onClick={() => setIsCategoryListOpen(prev => !prev)}>
+            {isCategoryListOpen ? "-" : "+"}
+          </button>
+        </li>
+      {isCategoryListOpen ? categories.map(cat => {
         return (
           <li key={cat.name}>
             <input type="checkbox"
@@ -57,17 +63,17 @@ export function FilterSelection({ingredientsToFilter, setIngredientsToFilter}: F
             />
             <label htmlFor={cat.name}>{cat.name}</label>
             <button type="button" onClick={() => handleDetailViewButtonPress(cat)}>
-              {expandedCategories.includes(cat.name) ? "less" : "more"}
+              {expandedCategories.includes(cat.name) ? "-" : "+"}
             </button>
             {expandedCategories.includes(cat.name) ?
-              <CategoryDetailView
+              <CategoryIngredients
               ingredients={cat.ingredients}
               ingredientsToFilter={ingredientsToFilter}
               setIngredientsToFilter={setIngredientsToFilter}
             /> : <></>}
           </li>
         );
-      })}
+      }) : null}
       </ul>
     </fieldset>
   );

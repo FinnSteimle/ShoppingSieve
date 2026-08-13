@@ -1,5 +1,5 @@
 import { CurrentProductIngredients } from './components/CurrentProductIngredients';
-import { Filter } from './components/Filter';
+import { Filter } from './components/Filter/Filter';
 import { CodeScanner } from './components/CodeScanner';
 import { useState } from 'react';
 
