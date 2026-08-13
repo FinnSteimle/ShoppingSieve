@@ -70,7 +70,7 @@ export function CategoryList({ ingredientsToFilter, setIngredientsToFilter }: Ca
               ingredients={cat.ingredients}
               ingredientsToFilter={ingredientsToFilter}
               setIngredientsToFilter={setIngredientsToFilter}
-            /> : <></>}
+            /> : null}
           </li>
         );
       }) : null}
