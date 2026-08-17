@@ -1,7 +1,4 @@
-function ScanView() {
-  return (
-    <>
-
-    </>
-  )
+export function ScanView() {
+  return null;
 }
+
