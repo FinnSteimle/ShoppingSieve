@@ -1,4 +1,4 @@
-import { CurrentIngredients } from './components/CurrentIngredients';
+import { CurrentProductIngredients } from './components/CurrentProductIngredients';
 import { Filter } from './components/Filter';
 import { CodeScanner } from './components/CodeScanner';
 
@@ -9,7 +9,7 @@ function App() {
     <>
       <CodeScanner />
       <Filter />
-      <CurrentIngredients />
+      <CurrentProductIngredients />
     </>
   )
 }

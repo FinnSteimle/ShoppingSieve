@@ -1,4 +1,4 @@
-import { Scanner } from '@yudiel/react-qr-scanner';
+// import { Scanner } from '@yudiel/react-qr-scanner';
 
 
 export function CodeScanner() {
