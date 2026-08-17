@@ -5,3 +5,8 @@ export interface Product {
   avoidedIngredientsFound?: string[];
   isSafe?: boolean;
 }
+
+export interface Category {
+  name: string;
+  ingredients: string[];
+}

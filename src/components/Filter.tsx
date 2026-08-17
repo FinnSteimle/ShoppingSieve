@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FilterSelection } from "./FilterSelection";
 
 export function Filter() {
   const [selectionMenuIsOpen, setSelectionMenuIsOpen] = useState<boolean>(false);
@@ -6,14 +7,14 @@ export function Filter() {
   const currentIngredientsToFilter: string[] = ["test", "dinkel"];
   return (
     <div>
-      <h1>Selected thing you want to filter for</h1>
+      <h3>Current ingredients you filter for:</h3>
       <ul>
         {currentIngredientsToFilter.map((i: string) => (
           <li key={i}>{i}</li>
         ))}
       </ul>
       <button type="button" onClick={() => setSelectionMenuIsOpen(prev => !prev)}>Add more things to filter</button>
-      <p>Current state of selectionMenuIsOpen: {`${selectionMenuIsOpen}`}</p>
+      {selectionMenuIsOpen ? <FilterSelection /> : null }
     </div>
   )
 }
