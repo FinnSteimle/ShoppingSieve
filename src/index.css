@@ -4,3 +4,49 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
 }
+
+
+/* Reset lists */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reset fieldsets */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+/* Remove default margin/padding from common structural tags */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Inherit fonts for form controls (to avoid weird font inheritence) */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Box sizing rule (to avoid any weird unexpected overflows) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

@@ -10,6 +10,9 @@ export function CodeScanner() {
         classNames={{ container: styles.container, video: styles.video }}
         onScan={(result) => console.log(result)}
         onError={(error) => console.log(error?.message)}
+        components={{
+          finder: false,
+        }}
       />}
     </>
   )

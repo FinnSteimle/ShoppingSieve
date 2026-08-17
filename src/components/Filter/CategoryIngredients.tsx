@@ -1,5 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
+import styles from "./CategoryIngredients.module.css";
+
 interface CategoryIngredientsProps {
   ingredients: string[];
   ingredientsToFilter: string[];
@@ -17,8 +19,8 @@ export function CategoryIngredients({ ingredients, ingredientsToFilter, setIngre
     }
   }
   return (
-    <fieldset>
-      <ul >
+    <fieldset className={styles.categoryIngredientsContainer}>
+      <ul className={styles.categoryIngredients}>
         {ingredients.map(ing => {
           return (
             <li key={ing}>

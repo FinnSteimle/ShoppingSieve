@@ -89,8 +89,8 @@ export function CategoryList({ ingredientsToFilter, setIngredientsToFilter }: Ca
   }
 
   return (
-    <fieldset>
-      <ul className={styles.ingredientCategories}>
+    <fieldset className={styles.categoryListContainer}>
+      <ul className={styles.categoryList}>
         <li>
           <button type="button" onClick={() => setIsCategoryListOpen(prev => !prev)}>
             {isCategoryListOpen ? "-" : "+"}
