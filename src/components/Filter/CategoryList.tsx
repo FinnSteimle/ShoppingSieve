@@ -18,6 +18,50 @@ export function CategoryList({ ingredientsToFilter, setIngredientsToFilter }: Ca
     {
       name: "Süssstoffe",
       ingredients: ["Aspartam (E951)", "Acesulfam K (E950)", "Sucralose (E955)", "Cyclamat (E952)", "Sorbit", "Xylit (Zuckeralkohole)"]
+    },
+    {
+      name: "Milchprodukte",
+      ingredients: ["Milch", "Milchpulver", "Laktose", "Molke", "Molkenpulver", "Kasein", "Rahm", "Sahne", "Butter", "Milchfett", "Buttermilch"]
+    },
+    {
+      name: "Nüsse",
+      ingredients: ["Mandeln", "Haselnüsse", "Walnüsse", "Cashewkerne", "Pistazien", "Macadamianüsse", "Paranüsse", "Pekannüsse"]
+    },
+    {
+      name: "Eier",
+      ingredients: ["Ei", "Eigelb", "Eiklar", "Eipulver", "Vollei", "Lysozym (E1105)"]
+    },
+    {
+      name: "Soja",
+      ingredients: ["Soja", "Sojalecithin (E322)", "Sojaprotein", "Sojamehl"]
+    },
+    {
+      name: "Konservierungsstoffe",
+      ingredients: ["Sorbinsäure (E200)", "Kaliumsorbat (E202)", "Natriumbenzoat (E211)", "Benzoesäure (E210)", "Schwefeldioxid (E220)", "Sulfite (E221-228)", "Natriumnitrit (E250)", "Kaliumnitrat (E252)"]
+    },
+    {
+      name: "Farbstoffe",
+      ingredients: ["Tartrazin (E102)", "Cochenille (E120)", "Azorubin (E122)", "Kurkumin (E100)", "Beta-Carotin (E160a)", "Titandioxid (E171)"]
+    },
+    {
+      name: "Geschmacksverstärker",
+      ingredients: ["Mononatriumglutamat (E621)", "Dinatriuminosinat (E631)", "Dinatriumguanylat (E627)", "Kaliumglutamat (E622)"]
+    },
+    {
+      name: "Emulgatoren/Verdickungsmittel",
+      ingredients: ["Lecithin (E322)", "Mono- und Diglyceride (E471)", "Carrageen (E407)", "Guarkernmehl (E412)", "Xanthan (E415)", "Johannisbrotkernmehl (E410)"]
+    },
+    {
+      name: "Fisch & Meeresfrüchte",
+      ingredients: ["Fisch", "Fischöl", "Krustentiere", "Weichtiere", "Fischgelatine"]
+    },
+    {
+      name: "Sonstige EU-Allergene",
+      ingredients: ["Sellerie", "Senf", "Sesam", "Lupinen", "Erdnüsse"]
+    },
+    {
+      name: "Palm-/Härtungsfette",
+      ingredients: ["Palmöl", "Palmfett", "gehärtetes Pflanzenfett", "Transfette"]
     }
   ]
 
