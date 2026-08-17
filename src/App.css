@@ -5,6 +5,7 @@
   --text: #f8fafc;
   --text-muted: #94a3b8;
   --danger: #f87171;
+  --safe: #4ade80;
 }
 
 * {
@@ -45,6 +46,47 @@ body {
 .subtitle {
   font-size: 0.9rem;
   color: var(--text-muted);
+}
+
+/* Filter Selection Section */
+.filter-section {
+  background: var(--card-bg);
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-section h3 {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pill-btn {
+  background: #334155;
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.pill-btn.active {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .main {
@@ -91,22 +133,63 @@ body {
   border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
-.product-card h2 {
-  font-size: 1.25rem;
-  color: var(--primary);
+/* Safety Alert Banner */
+.safety-banner {
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.product-card h3 {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
+.safety-banner.safe {
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid var(--safe);
+}
+
+.safety-banner.safe .safety-title {
+  color: var(--safe);
+}
+
+.safety-banner.danger {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid var(--danger);
+}
+
+.safety-banner.danger .safety-title {
+  color: var(--danger);
+}
+
+.safety-title {
+  font-size: 1.5rem;
+  font-weight: 800;
   letter-spacing: 0.05em;
 }
 
-.product-card p {
-  font-size: 0.95rem;
+.safety-desc {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.product-card h2 {
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.product-card h3 {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.ingredients-text {
+  font-size: 0.9rem;
   line-height: 1.5;
+  color: var(--text-muted);
 }

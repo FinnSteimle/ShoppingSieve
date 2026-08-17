@@ -1,21 +1,16 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// Import defineConfig helper from Vite for type-safe build configuration
+import { defineConfig } from 'vite';
+// Import Official React plugin for Vite to support JSX compilation & Fast Refresh
+import react from '@vitejs/plugin-react';
+// Import basic SSL plugin to generate self-signed HTTPS certificates for local development (required for iOS camera API access)
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
-// https://vite.dev/config/
+// Export Vite configuration object
 export default defineConfig({
   plugins: [
-    react(),
-    basicSsl()
-  ],
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
-      }
-    }
-  }
-})
+    react(), // Enable React JSX transformations
+    basicSsl() // Enable local HTTPS server mode for WebRTC/getUserMedia camera security requirements
+  ]
+});
+
 
