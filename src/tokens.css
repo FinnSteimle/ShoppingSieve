@@ -10,9 +10,16 @@
     --distance-lg: 3rem;
 
     /* text */
+    --text-font: Arial, sans-serif;
+
+    /* text-weight */
+    --text-weight-base: 400;
+    --text-weight-bold: 700;
+
+    /* text-size */
     --text-size-base: 1rem;
-    --text-size-header-sm: 2rem;
-    --text-size-header-md: 3rem;
-    --text-size-header-lg: 4rem;
+    --text-size-header-sm: 1.5rem;
+    --text-size-header-md: 2rem;
+    --text-size-header-lg: 3rem;
 
 }
