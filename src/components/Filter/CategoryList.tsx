@@ -2,7 +2,7 @@ import { useState, type Dispatch, type SetStateAction } from "react";
 import type { Category } from "../../types/types"
 import { CategoryIngredients } from "./CategoryIngredients";
 
-import styles from "./CategoryList.module.css";
+// import styles from "./CategoryList.module.css";
 
 interface CategoryListProps {
   ingredientsToFilter: string[];
@@ -89,8 +89,8 @@ export function CategoryList({ ingredientsToFilter, setIngredientsToFilter }: Ca
   }
 
   return (
-    <fieldset className={styles.categoryListContainer}>
-      <ul className={styles.categoryList}>
+    <fieldset>
+      <ul>
         <li>
           <button type="button" onClick={() => setIsCategoryListOpen(prev => !prev)}>
             {isCategoryListOpen ? "-" : "+"}

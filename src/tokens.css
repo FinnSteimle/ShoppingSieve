@@ -1,5 +1,4 @@
 :root {
-
     /* colors */
     --color-bg: #242424;
     --color-text: white;
@@ -10,7 +9,7 @@
     --distance-lg: 3rem;
 
     /* text */
-    --text-font: Arial, sans-serif;
+    --text-font: arial, sans-serif;
 
     /* text-weight */
     --text-weight-base: 400;

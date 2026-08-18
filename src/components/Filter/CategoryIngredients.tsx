@@ -19,7 +19,7 @@ export function CategoryIngredients({ ingredients, ingredientsToFilter, setIngre
     }
   }
   return (
-    <fieldset className={styles.categoryIngredientsContainer}>
+    <fieldset>
       <ul className={styles.categoryIngredients}>
         {ingredients.map(ing => {
           return (
