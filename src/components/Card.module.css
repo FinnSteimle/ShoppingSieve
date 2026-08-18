@@ -3,7 +3,7 @@
 .outerContainer {
   background-color: var(--color-major-element);
   box-shadow: var(--element-shadow);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
 }
 
 .innerContainer {
