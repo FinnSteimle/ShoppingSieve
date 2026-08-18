@@ -1,0 +1,17 @@
+@import "./tokens.css";
+
+.outerContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.componentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--distance-sm);
+}
+
+.placeholder {
+  display: flex;
+  flex: 1;
+}
