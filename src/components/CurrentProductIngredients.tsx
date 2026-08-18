@@ -1,3 +1,9 @@
+import { Card } from "./Card";
+
 export function CurrentProductIngredients() {
-  return <p>CurrentProductIngredients</p>;
+  return (
+    <Card>
+      <p>CurrentProductIngredients</p>
+    </Card>
+  );
 }
