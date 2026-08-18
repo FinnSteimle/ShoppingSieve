@@ -1,12 +1,20 @@
 :root {
   /* colors */
-  --color-bg: #242424;
+  --color-bg: #1a1a1a;
+  --color-major-element: #242424;
+  --color-minor-element: #2e2e2e;
   --color-text: white;
 
   /* distances */
   --distance-sm: 1rem;
   --distance-md: 2rem;
   --distance-lg: 3rem;
+
+  /* radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-round: 9999rem;
 
   /* text */
   --text-font: arial, sans-serif;
@@ -20,4 +28,7 @@
   --text-size-header-sm: 1.5rem;
   --text-size-header-md: 2rem;
   --text-size-header-lg: 3rem;
+
+  /* shadow */
+  --element-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px, rgb(0 0 0 / 8%) 0px 0px 0px 1px;
 }
