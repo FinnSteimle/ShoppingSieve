@@ -1,4 +1,18 @@
 :root {
+
+    /* colors */
     --color-bg: #242424;
     --color-text: white;
+
+    /* distances */
+    --distance-sm: 1rem;
+    --distance-md: 2rem;
+    --distance-lg: 3rem;
+
+    /* text */
+    --text-size-base: 1rem;
+    --text-size-header-sm: 2rem;
+    --text-size-header-md: 3rem;
+    --text-size-header-lg: 4rem;
+
 }
