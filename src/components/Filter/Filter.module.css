@@ -1,6 +1,16 @@
 @import "../../tokens.css";
 
-.categoryListContainer {
+.categoryList {
   list-style: none;
   display: flex;
+}
+
+.outerContainer {
+  background-color: var(--color-major-element);
+  box-shadow: var(--element-shadow);
+  border-radius: var(--radius-lg);
+}
+
+.innerContainer {
+  margin: var(--distance-sm);
 }
