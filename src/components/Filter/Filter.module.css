@@ -1,7 +1,6 @@
-@import '../../tokens.css';
-
+@import "../../tokens.css";
 
 .categoryListContainer {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
 }

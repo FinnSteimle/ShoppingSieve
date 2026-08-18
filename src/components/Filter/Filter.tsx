@@ -9,7 +9,7 @@ interface FilterProps {
 }
 
 export function Filter({ ingredientsToFilter, setIngredientsToFilter }: FilterProps) {
-return (
+  return (
     <>
       <h3>Current ingredients you filter for:</h3>
       <ul className={styles.categoryListContainer}>
@@ -17,7 +17,10 @@ return (
           <li key={i}>{i}</li>
         ))}
       </ul>
-      <CategoryList ingredientsToFilter={ingredientsToFilter} setIngredientsToFilter={setIngredientsToFilter} />
+      <CategoryList
+        ingredientsToFilter={ingredientsToFilter}
+        setIngredientsToFilter={setIngredientsToFilter}
+      />
     </>
-  )
+  );
 }

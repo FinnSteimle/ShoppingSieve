@@ -1,11 +1,9 @@
-
 .container {
-    max-height: 180px;
-    max-width: 480px;
-    overflow: hidden;
+  max-height: 180px;
+  max-width: 480px;
+  overflow: hidden;
 }
 
-
 .video {
-    object-fit: cover;
+  object-fit: cover;
 }

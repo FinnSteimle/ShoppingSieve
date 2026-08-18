@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from "react";
 
 import styles from "./CategoryIngredients.module.css";
 
@@ -8,23 +8,28 @@ interface CategoryIngredientsProps {
   setIngredientsToFilter: Dispatch<SetStateAction<string[]>>;
 }
 
-export function CategoryIngredients({ ingredients, ingredientsToFilter, setIngredientsToFilter }: CategoryIngredientsProps) {
-
+export function CategoryIngredients({
+  ingredients,
+  ingredientsToFilter,
+  setIngredientsToFilter,
+}: CategoryIngredientsProps) {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       setIngredientsToFilter((prev: string[]) => [...prev, e.target.name]);
+    } else {
+      setIngredientsToFilter((prev: string[]) =>
+        [...prev].filter((ingredient: string) => e.target.name !== ingredient),
+      );
     }
-    else {
-      setIngredientsToFilter((prev: string[]) => [...prev].filter((ingredient: string) => e.target.name !== ingredient));
-    }
-  }
+  };
   return (
     <fieldset>
       <ul className={styles.categoryIngredients}>
-        {ingredients.map(ing => {
+        {ingredients.map((ing) => {
           return (
             <li key={ing}>
-              <input type="checkbox"
+              <input
+                type="checkbox"
                 id={ing}
                 name={ing}
                 checked={ingredientsToFilter.includes(ing)}

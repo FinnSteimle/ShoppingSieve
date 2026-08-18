@@ -2,27 +2,30 @@
 @import "./tokens.css";
 
 body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    font-family: var(--text-font);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--text-font);
 }
 
-h1, h2, h3 {
-    font-weight: var(--text-weight-base);
+h1,
+h2,
+h3 {
+  font-weight: var(--text-weight-base);
 }
 
 h1 {
-    font-size: var(--text-size-header-lg);
+  font-size: var(--text-size-header-lg);
 }
 
 h2 {
-    font-size: var(--text-size-header-md);
+  font-size: var(--text-size-header-md);
 }
 
 h3 {
-    font-size: var(--text-size-header-sm);
+  font-size: var(--text-size-header-sm);
 }
 
-p, li {
-    font-size: var(--text-size-base);
+p,
+li {
+  font-size: var(--text-size-base);
 }

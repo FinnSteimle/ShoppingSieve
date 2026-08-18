@@ -1,5 +1,3 @@
 export function CurrentProductIngredients() {
-  return (
-    <p>CurrentProductIngredients</p>
-  )
+  return <p>CurrentProductIngredients</p>;
 }

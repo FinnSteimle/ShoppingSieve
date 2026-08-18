@@ -1,24 +1,23 @@
 :root {
-    /* colors */
-    --color-bg: #242424;
-    --color-text: white;
+  /* colors */
+  --color-bg: #242424;
+  --color-text: white;
 
-    /* distances */
-    --distance-sm: 1rem;
-    --distance-md: 2rem;
-    --distance-lg: 3rem;
+  /* distances */
+  --distance-sm: 1rem;
+  --distance-md: 2rem;
+  --distance-lg: 3rem;
 
-    /* text */
-    --text-font: arial, sans-serif;
+  /* text */
+  --text-font: arial, sans-serif;
 
-    /* text-weight */
-    --text-weight-base: 400;
-    --text-weight-bold: 700;
+  /* text-weight */
+  --text-weight-base: 400;
+  --text-weight-bold: 700;
 
-    /* text-size */
-    --text-size-base: 1rem;
-    --text-size-header-sm: 1.5rem;
-    --text-size-header-md: 2rem;
-    --text-size-header-lg: 3rem;
-
+  /* text-size */
+  --text-size-base: 1rem;
+  --text-size-header-sm: 1.5rem;
+  --text-size-header-md: 2rem;
+  --text-size-header-lg: 3rem;
 }
