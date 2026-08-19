@@ -6,6 +6,7 @@
   --color-text: white;
 
   /* distances */
+  --distance-xs: 0.5rem;
   --distance-sm: 1rem;
   --distance-md: 2rem;
   --distance-lg: 3rem;
