@@ -3,6 +3,7 @@
 .outerContainer {
   display: flex;
   flex-direction: row;
+  margin: var(--distance-sm);
 }
 
 .componentContainer {
