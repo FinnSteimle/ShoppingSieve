@@ -2,7 +2,6 @@
 
 .scannerContainer {
   max-height: 180px;
-  max-width: 480px;
   overflow: hidden;
   border-radius: var(--radius-sm);
 }
