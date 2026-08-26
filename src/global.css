@@ -2,14 +2,9 @@
 @import "./tokens.css";
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--color-bg-app);
+  color: var(--color-text-primary);
   font-family: var(--text-font);
-}
-
-h1 {
-  font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-header-sm);
 }
 
 p,

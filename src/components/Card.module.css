@@ -1,9 +1,10 @@
 @import "../tokens.css";
 
 .outerContainer {
-  background-color: var(--color-major-element);
-  box-shadow: var(--element-shadow);
-  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-card);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-card);
 }
 
 .innerContainer {
