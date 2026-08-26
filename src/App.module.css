@@ -3,13 +3,13 @@
 .outerContainer {
   display: flex;
   flex-direction: row;
-  margin: var(--distance-sm);
+  padding: var(--distance-lg);
 }
 
 .componentContainer {
   display: flex;
   flex-direction: column;
-  gap: var(--distance-sm);
+  gap: var(--distance-xl);
   width: 100%;
   max-width: 30rem; /* a bit bigger than usual phone screens are */
 }
