@@ -1,35 +1,48 @@
 :root {
   /* colors */
-  --color-bg: #1a1a1a;
-  --color-major-element: #242424;
-  --color-minor-element: #2e2e2e;
-  --color-text: white;
+  --color-bg-app: #0f172a;
+  --color-bg-card: #1e293b;
+  --color-bg-panel: #283449;
+  --color-bg-pill: #334155; /* not used right now: reserved for later */
+  --color-bg-pill-danger: #453540;
+
+  --color-border-card: rgba(255, 255, 255, 0.05);
+  --color-border-pill: rgba(255, 255, 255, 0.1); /* not used right now: reserved for later */
+  --color-border-pill-danger: #d9636b;
+
+  --color-text-primary: #f8fafc;
+  --color-text-secondary:#94a3b8;
+  --color-text-title: #7dd3fc;
+  --color-text-pill-danger: #f2a8b0;
 
   /* distances */
-  --distance-xs: 0.5rem;
-  --distance-sm: 1rem;
-  --distance-md: 2rem;
-  --distance-lg: 3rem;
+  --distance-xs: 0.25rem;
+  --distance-sm: 0.5rem;
+  --distance-md: 0.75rem;
+  --distance-lg: 1rem;
+  --distance-xl: 1.25rem;
 
   /* radius */
   --radius-sm: 0.5rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem; /* not used right now: reserved for later */
   --radius-round: 9999rem;
 
   /* text */
   --text-font: arial, sans-serif;
 
   /* text-weight */
-  --text-weight-base: 400;
+  --text-weight-regular: 400; /* not used right now: reserved for later */
+  --text-weight-semibold: 600;
   --text-weight-bold: 700;
 
   /* text-size */
-  --text-size-base: 1rem;
-  --text-size-header-sm: 1.5rem;
-  --text-size-header-md: 2rem;
-  --text-size-header-lg: 3rem;
+  --text-size-xs: 0.5rem; /* not used right now: reserved for later */
+  --text-size-sm: 0.75rem;
+  --text-size-base: 0.85rem;
+  --text-size-lg: 1rem; /* not used right now: reserved for later */
+  --text-size-xl: 1.6rem;
 
   /* shadow */
-  --element-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px, rgb(0 0 0 / 8%) 0px 0px 0px 1px;
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
