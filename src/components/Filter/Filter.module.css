@@ -1,6 +1,39 @@
 @import "../../tokens.css";
 
-.categoryList {
-  list-style: none;
+
+.filteredIngredientsOuterContainer {
   display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-panel);
+  padding: var(--distance-md);
+  border-radius: var(--radius-sm);
+  gap: var(--distance-sm);
+}
+
+.title {
+    font-size: var(--text-size-sm);
+    font-weight: var(--text-weight-bold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.subtitle {
+    font-size: var(--text-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.filteredIngredientsList {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--distance-xs)
+}
+
+.filteredIngredient {
+  background-color: var(--color-bg-pill-danger);
+  padding: var(--distance-sm);
+  border-radius: var(--radius-round);
+  border: 1px solid var(--color-border-pill-danger);
+  font-weight: var(--text-weight-semibold);
+  color: var(--color-text-pill-danger);
 }

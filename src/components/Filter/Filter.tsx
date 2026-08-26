@@ -12,12 +12,19 @@ interface FilterProps {
 export function Filter({ ingredientsToFilter, setIngredientsToFilter }: FilterProps) {
   return (
     <Card>
-      <h3>Current ingredients you filter for:</h3>
-      <ul className={styles.categoryList}>
-        {ingredientsToFilter.map((i: string) => (
-          <li key={i}>{i}</li>
-        ))}
-      </ul>
+      <div className={styles.filteredIngredientsOuterContainer}>
+        <div>
+          <h2 className={styles.title}>Ingredients to avoid</h2>
+          <p className={styles.subtitle}>Selected ingredients trigger a DANGER warning when scanned</p>
+        </div>
+        <ul className={styles.filteredIngredientsList}>
+          {ingredientsToFilter.map((i: string) => (
+            <div className={styles.filteredIngredient}>
+              <li key={i}>{i}</li>
+            </div>
+          ))}
+        </ul>
+      </div>
       <CategoryList
         ingredientsToFilter={ingredientsToFilter}
         setIngredientsToFilter={setIngredientsToFilter}
