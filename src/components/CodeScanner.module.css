@@ -3,7 +3,7 @@
 .scannerContainer {
   max-height: 180px;
   overflow: hidden;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
 }
 
 .video {
@@ -14,5 +14,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--distance-xs);
+  gap: var(--distance-sm);
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: var(--text-size-xl);
+    font-weight: var(--text-weight-bold);
+    color: var(--color-text-title);
+}
+
+.subtitle {
+  font-size: var(--text-size-base);
+  color: var(--color-text-secondary);
 }

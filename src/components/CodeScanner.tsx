@@ -7,7 +7,10 @@ export function CodeScanner() {
   return (
     <Card>
       <div className={styles.outerContainer}>
-        <h1>Scanner</h1>
+        <div className={styles.titleContainer}>
+          <h1 className={styles.title}>Scanner</h1>
+          <p className={styles.subtitle}>Scan a food product barcode</p>
+        </div>
         {
           <Scanner
             classNames={{
